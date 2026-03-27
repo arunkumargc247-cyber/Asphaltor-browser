@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX University | Browser Battle Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blood-red: #8C0000;
+            --formal-font: 'Playfair Display', serif;
+            --saas-font: 'Inter', sans-serif;
+        }
+
+        body { font-family: var(--saas-font); background: #ffffff; color: #1a1a1a; overflow-x: hidden; }
+        h1, h2, h3, .nav-link { font-family: var(--formal-font); }
+
+        /* SaaS Ease-Out Transitions [Requested] */
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        /* Glassmorphism Nav */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* Mega Menu Fix: Ensures menu stays open during mouse movement */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-top: 4px solid var(--blood-red);
+            z-index: 100;
+            padding: 10px 0;
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+
+        /* Hero Image Slider */
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .slide.active { opacity: 1; }
+        
+        /* Accreditation Text Overlay */
+        .text-glow { text-shadow: 0 0 10px rgba(140, 0, 0, 0.2); }
+    </style>
+</head>
+<body>
+
+    <div class="bg-gray-50 border-b border-gray-100 py-3 px-10 flex flex-col md:flex-row justify-between items-center text-xs">
+        <div class="flex items-center gap-4">
+            <span class="text-xl font-black text-[#8C0000] tracking-tighter uppercase font-serif">APEX UNIVERSITY</span>
+            <div class="h-5 w-[1px] bg-gray-300 hidden md:block"></div>
+            <div class="font-bold tracking-widest text-gray-500">
+                NAAC A++ ACCREDITED • UGC RECOGNIZED • ESTD 1998
+            </div>
+        </div>
+        <div id="google_translate_element" class="mt-2 md:mt-0"></div>
+    </div>
+
+    <nav class="glass-nav sticky top-0 z-50 px-10 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <img src="logo.png" alt="APEX" class="h-12 w-auto object-contain">
+            <div class="h-8 w-[1px] bg-gray-200"></div>
+            <span class="text-[10px] font-black uppercase text-gray-400 leading-none">Global<br>Standard</span>
+        </div>
+        
+        <div class="hidden lg:flex space-x-8 text-[11px] font-extrabold uppercase tracking-widest text-gray-800">
+            <a href="index.html" class="nav-link hover:text-red-700">Home</a>
+            
+            <div class="dropdown">
+                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">About <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></a>
+                <div class="dropdown-menu animate__animated animate__fadeIn">
+                    <a href="about-college.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">About College</a>
+                    <a href="ceo-desk.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">CEO's Desk</a>
+                    <a href="#" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Chairman</a>
+                    <a href="#" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Principal</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="cse-dept.html" class="nav-link hover:text-red-700 flex items-center gap-1">Departments <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></a>
+                <div class="dropdown-menu animate__animated animate__fadeIn">
+                    <a href="cse.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Computer Science (CSE)</a>
+                    <a href="iot.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">CSE (IoT & Cyber)</a>
+                    <a href="cse.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Data Science</a>
+                </div>
+            </div>
+
+            <a href="#" class="nav-link hover:text-red-700">Facilities</a>
+            <a href="#" class="nav-link hover:text-red-700">Achievements</a>
+            <a href="#" class="nav-link hover:text-red-700">Placement</a>
+            <a href="#" class="nav-link hover:text-red-700">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="relative h-[85vh] w-full overflow-hidden bg-black">
+        <div class="slide active" style="background-image: url('one.jpg');"></div>
+        <div class="slide" style="background-image: url('two.jpg');"></div>
+        <div class="slide" style="background-image: url('three.jpg');"></div>
+        <div class="slide" style="background-image: url('four.jpg');"></div>
+        <div class="slide" style="background-image: url('five.jpg');"></div>
+        <div class="slide" style="background-image: url('six.jpg');"></div>
+        
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent z-10"></div>
+        
+        <div class="relative z-20 h-full flex items-center px-10 md:px-24">
+            <div class="max-w-4xl" data-aos="fade-right">
+                <h1 class="text-white text-5xl md:text-8xl font-black mb-6 leading-none">REFINING <br><span class="text-[#8C0000]">INTELLIGENCE.</span></h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-10 font-light max-w-2xl leading-relaxed italic">
+                    "Ranked among India's top private universities for technical education and industrial research."
+                </p>
+                <div class="flex gap-6">
+                    <button class="bg-[#8C0000] text-white px-10 py-4 font-bold uppercase text-[11px] tracking-widest hover:bg-red-700 transition">Explore Academics</button>
+                    <button class="border border-white text-white px-10 py-4 font-bold uppercase text-[11px] tracking-widest hover:bg-white hover:text-black transition">Virtual Tour</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 px-10 bg-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-black mb-6 border-l-8 border-red-700 pl-6">National Credentials</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-8">
+                    APEX University has been recognized as a Tier-1 institution. Our commitment to quality is reflected in our A++ NAAC accreditation and international ISO certifications.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-gray-50 rounded-lg border-b-2 border-red-700">
+                        <p class="text-2xl font-black text-red-800">A++</p>
+                        <p class="text-[10px] uppercase font-bold text-gray-400">NAAC Grade</p>
+                    </div>
+                    <div class="p-4 bg-gray-50 rounded-lg border-b-2 border-red-700">
+                        <p class="text-2xl font-black text-red-800">NIRF</p>
+                        <p class="text-[10px] uppercase font-bold text-gray-400">Top 100 Rank</p>
+                    </div>
+                </div>
+            </div>
+            <div class="h-80 rounded-2xl bg-[url('one.jpg')] bg-cover relative overflow-hidden shadow-2xl" data-aos="zoom-in">
+                <div class="absolute inset-0 bg-white/80 flex items-center justify-center p-12 text-center">
+                    <p class="text-xl font-serif italic text-gray-800 leading-relaxed">
+                        "Empowering the next generation of engineers through research-led teaching and world-class labs."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#111] text-white py-16 px-10 text-center border-t border-gray-800">
+        <div class="text-3xl font-black tracking-tighter text-[#8C0000] mb-4 font-serif uppercase">APEX UNIVERSITY</div>
+        <p class="opacity-40 text-[10px] tracking-widest uppercase">Production-Ready University Portal © 2026 | Browser Battle Submission</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // HERO SLIDER LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000);
+
+        // GOOGLE TRANSLATE
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
