@@ -2,31 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chairman | APEX University</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal | APEX University</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        .page-bg { background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('two.jpg'); background-size: cover; }
-        .ceo-img { border: 10px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        /* Ease-out transition for smooth hover physics */
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        
+        body { font-family: 'Inter', sans-serif; color: #1a1a1a; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        
+        .page-bg { 
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('two.jpg'); 
+            background-size: cover; 
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        /* Image Hover & Offset styling */
+        .principal-img { 
+            border: 8px solid white; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+            z-index: 10;
+            position: relative;
+        }
+        .principal-img:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(140,0,0,0.2);
+        }
+
+        /* Glassmorphism for Qualification Box */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid #8C0000;
+        }
     </style>
 </head>
 <body class="page-bg">
-    <div class="max-w-6xl mx-auto py-20 px-10 flex flex-col md:flex-row gap-16 items-center">
-        <div class="w-full md:w-1/3">
-            <img src="principal.png" alt="CEO" class="ceo-img rounded-3xl w-full grayscale hover:grayscale-0 transition duration-700">
-        </div>
+
+    <div class="max-w-7xl mx-auto py-20 px-10">
         
-        <div class="w-full md:w-2/3">
-            <h4 class="text-red-700 font-bold uppercase tracking-widest mb-2">Leadership</h4>
-            <h1 class="text-5xl font-black mb-6" style="font-family: 'Playfair Display';">From the CEO's Desk</h1>
-            <p class="text-gray-700 leading-loose text-lg">
-                Welcome to APEX University. Our commitment is to bridge the gap between academic theory and corporate practice. As the Chairman, I ensure that every student is equipped with not just a degree, but a career blueprint. Our placemet-driven campus model is designed for the modern world...
-            </p>
-            <div class="mt-8">
-                <p class="font-bold text-xl">Dr. Martin Joel</p>
-                <p class="text-gray-500">Principal, APEX University</p>
+        <div class="flex flex-col lg:flex-row gap-20 items-center">
+            
+            <div class="w-full lg:w-5/12 relative" data-aos="fade-right" data-aos-duration="1000">
+                <div class="absolute -top-6 -left-6 w-full h-full border-4 border-[#8C0000] rounded-3xl z-0 hidden md:block"></div>
+                <img src="principal.png" alt="Dr. Martin Joel" class="principal-img rounded-3xl w-full grayscale hover:grayscale-0">
+            </div>
+            
+            <div class="w-full lg:w-7/12" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                
+                <h4 class="text-[#8C0000] font-bold uppercase tracking-widest mb-2 text-sm" data-aos="fade-down" data-aos-delay="300">Academic Excellence</h4>
+                <h1 class="text-5xl md:text-6xl font-black mb-8 leading-tight">From the Principal's Desk</h1>
+                
+                <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                    Welcome to the academic core of APEX University. Education is no longer just about transferring knowledge; it is about igniting curiosity. As the Principal, my primary mandate is to cultivate an environment where rigorous academic theory seamlessly intersects with cutting-edge corporate practice. 
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mb-10">
+                    We take pride in our distinguished faculty and our placement-driven curriculum. Our focus is holistic—shaping not only exceptional engineers and managers, but ethical leaders ready to architect the future of our modern world. Your journey to mastery begins in our classrooms.
+                </p>
+
+                <div class="glass-box p-8 rounded-2xl shadow-lg mb-10" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-widest text-gray-800">Academic Prowess & Experience</h3>
+                    <ul class="space-y-4 text-sm font-bold text-gray-600">
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">🎓</span> 
+                            <span>Ph.D. in Educational Leadership & Advanced Physics</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">📚</span> 
+                            <span>Author of 40+ Published Research Papers in Global Journals</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">🏛️</span> 
+                            <span>25+ Years of Academic Administration & Faculty Mentorship</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex items-center justify-between border-t border-gray-200 pt-8" data-aos="zoom-in" data-aos-delay="500">
+                    <div>
+                        <p class="font-black text-2xl" style="font-family: 'Playfair Display';">Dr. Martin Joel</p>
+                        <p class="text-[#8C0000] font-bold uppercase tracking-widest text-xs mt-1">Principal, APEX University</p>
+                    </div>
+                    <div class="text-5xl text-gray-300 opacity-50" style="font-family: 'Playfair Display'; font-style: italic;">
+                        M. Joel
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <a href="index.html" class="text-sm font-bold border-b-2 border-red-800 pb-1 hover:text-red-800 transition">
+                        ← Back to Main Portal
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ 
+            duration: 1000, 
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+    </script>
 </body>
 </html>

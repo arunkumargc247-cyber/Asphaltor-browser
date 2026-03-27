@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Facilities | APEX University</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blood-red: #8C0000;
+            --formal-font: 'Playfair Display', serif;
+            --saas-font: 'Inter', sans-serif;
+        }
+
+        body { 
+            font-family: var(--saas-font); 
+            background: #f8f9fa; 
+            color: #1a1a1a; 
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, .nav-link, .serif-text { 
+            font-family: var(--formal-font); 
+        }
+
+        /* Global Smooth Transitions */
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        .page-bg {
+            background: linear-gradient(rgba(248, 249, 250, 0.95), rgba(248, 249, 250, 0.98)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* Facility Cards */
+        .facility-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 4px solid transparent;
+            cursor: pointer;
+        }
+        .facility-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--blood-red);
+            background: white;
+            box-shadow: 0 25px 50px rgba(140,0,0,0.1);
+        }
+
+        /* Modal / Animatic Overlay */
+        #modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        #modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Modal Box Animation */
+        #modal-content {
+            background: white;
+            border-radius: 1.5rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+        }
+        #modal-overlay.active #modal-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Hide scrollbar for modal */
+        #modal-content::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="page-bg">
+
+    <nav class="glass-nav sticky top-0 z-50 px-10 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-4">
+            <span class="text-2xl font-black text-[#8C0000] tracking-tighter uppercase font-serif">APEX</span>
+            <div class="h-10 w-[1px] bg-gray-300"></div>
+            <span class="text-xs font-black uppercase text-gray-400 leading-none tracking-widest">Global<br>Standard</span>
+        </div>
+        
+        <div class="hidden lg:flex space-x-8 text-[11px] font-extrabold uppercase tracking-widest text-gray-800">
+            <a href="index.html" class="nav-link hover:text-red-700">Home</a>
+            <a href="facilities.html" class="nav-link text-red-700">Facilities</a>
+            <a href="all-news.html" class="nav-link hover:text-red-700">News</a>
+            <a href="contact-us.html" class="nav-link hover:text-red-700">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto py-20 px-6 md:px-10">
+        <header class="text-center mb-16" data-aos="fade-down">
+            <h1 class="text-5xl md:text-6xl font-black mb-4 text-gray-900 serif-text">World-Class Facilities</h1>
+            <p class="text-[#8C0000] uppercase tracking-widest font-bold text-sm">Experience a 24/7 Smart Campus</p>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-sm leading-relaxed">
+                Click on any facility below to explore the advanced infrastructure, dedicated services, and premium amenities available to APEX University students.
+            </p>
+        </header>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <div class="facility-card p-8 rounded-2xl shadow-lg group" data-aos="fade-up" onclick="openFacility('hostels')">
+                <div class="text-4xl mb-4 transform group-hover:scale-110 transition duration-300">🏠</div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Modern Hostels</h3>
+                <p class="text-gray-600 text-sm mb-4">Separate premium housing for boys and girls with AC and non-AC options.</p>
+                <span class="text-xs font-bold text-[#8C0000] uppercase tracking-widest flex items-center gap-1">Explore Details <span>→</span></span>
+            </div>
+
+            <div class="facility-card p-8 rounded-2xl shadow-lg group" data-aos="fade-up" data-aos-delay="100" onclick="openFacility('labs')">
+                <div class="text-4xl mb-4 transform group-hover:scale-110 transition duration-300">🔬</div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Advanced Labs</h3>
+                <p class="text-gray-600 text-sm mb-4">State-of-the-art research labs for AI, IoT, and Robotics research.</p>
+                <span class="text-xs font-bold text-[#8C0000] uppercase tracking-widest flex items-center gap-1">Explore Details <span>→</span></span>
+            </div>
+
+            <div class="facility-card p-8 rounded-2xl shadow-lg group" data-aos="fade-up" data-aos-delay="200" onclick="openFacility('fitness')">
+                <div class="text-4xl mb-4 transform group-hover:scale-110 transition duration-300">🏋️</div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Fitness Center</h3>
+                <p class="text-gray-600 text-sm mb-4">Fully equipped gym with professional trainers and modern equipment.</p>
+                <span class="text-xs font-bold text-[#8C0000] uppercase tracking-widest flex items-center gap-1">Explore Details <span>→</span></span>
+            </div>
+
+            <div class="facility-card p-8 rounded-2xl shadow-lg group" data-aos="fade-up" onclick="openFacility('sports')">
+                <div class="text-4xl mb-4 transform group-hover:scale-110 transition duration-300">🏀</div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Sports Complex</h3>
+                <p class="text-gray-600 text-sm mb-4">International standard courts for Basketball, Tennis, and Cricket.</p>
+                <span class="text-xs font-bold text-[#8C0000] uppercase tracking-widest flex items-center gap-1">Explore Details <span>→</span></span>
+            </div>
+
+            <div class="facility-card p-8 rounded-2xl shadow-lg group" data-aos="fade-up" data-aos-delay="100" onclick="openFacility('canteen')">
+                <div class="text-4xl mb-4 transform group-hover:scale-110 transition duration-300">☕</div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Central Canteen</h3>
+                <p class="text-gray-600 text-sm mb-4">Multi-cuisine cafeteria serving hygienic and nutritious meals.</p>
+                <span class="text-xs font-bold text-[#8C0000] uppercase tracking-widest flex items-center gap-1">Explore Details <span>→</span></span>
+            </div>
+
+            <div class="facility-card p-8 rounded-2xl shadow-lg group" data-aos="fade-up" data-aos-delay="200" onclick="openFacility('library')">
+                <div class="text-4xl mb-4 transform group-hover:scale-110 transition duration-300">📚</div>
+                <h3 class="text-xl font-bold mb-2 text-gray-900">Digital Library</h3>
+                <p class="text-gray-600 text-sm mb-4">Access to 100,000+ books and global research journals 24/7.</p>
+                <span class="text-xs font-bold text-[#8C0000] uppercase tracking-widest flex items-center gap-1">Explore Details <span>→</span></span>
+            </div>
+
+        </div>
+
+        <div class="mt-16 text-center" data-aos="fade-in">
+            <a href="index.html" class="inline-block border-2 border-[#8C0000] text-[#8C0000] px-10 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#8C0000] hover:text-white transition shadow-lg">
+                ← Back to Home
+            </a>
+        </div>
+    </div>
+
+    <div id="modal-overlay" onclick="closeModal(event)">
+        <div id="modal-content" class="relative flex flex-col md:flex-row">
+            
+            <button onclick="forceCloseModal()" class="absolute top-4 right-4 z-50 bg-black/50 text-white hover:bg-[#8C0000] w-8 h-8 rounded-full flex items-center justify-center transition">✕</button>
+
+            <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden rounded-t-1.5rem md:rounded-l-1.5rem md:rounded-tr-none">
+                <img id="modal-img" src="" alt="Facility" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 text-white text-5xl" id="modal-icon"></div>
+            </div>
+
+            <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                <h2 id="modal-title" class="text-3xl font-black text-gray-900 mb-4 serif-text">Title</h2>
+                <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed mb-6">Description goes here.</p>
+                
+                <h4 class="text-[10px] font-black text-[#8C0000] uppercase tracking-widest mb-3 border-b border-gray-100 pb-2">Key Highlights</h4>
+                <ul id="modal-features" class="space-y-3">
+                    </ul>
+                
+                <button onclick="forceCloseModal()" class="mt-8 bg-gray-900 text-white w-full py-3 rounded text-xs font-bold uppercase tracking-widest hover:bg-[#8C0000] transition">Close Viewer</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Database of Facility Information
+        const facilitiesData = {
+            hostels: {
+                title: "Premium Modern Hostels",
+                icon: "🏠",
+                img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=800",
+                desc: "Designed to be a home away from home, our residential blocks are meticulously maintained and heavily secured. Students can choose between single, double, or triple occupancy rooms.",
+                features: [
+                    "✓ 24/7 Biometric Security & CCTV surveillance",
+                    "✓ High-speed 100Mbps Wi-Fi in every room",
+                    "✓ Fully automated in-house laundry services",
+                    "✓ Air-conditioned recreational lounges with PS5 & TV"
+                ]
+            },
+            labs: {
+                title: "Advanced Research Labs",
+                icon: "🔬",
+                img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+                desc: "APEX houses industry-sponsored laboratories where theoretical knowledge meets practical execution. We partner with IBM, Intel, and NVIDIA to keep our tech stacks updated.",
+                features: [
+                    "✓ 6-Axis KUKA Robotic Arms for Mechanical R&D",
+                    "✓ NVIDIA DGX workstations for AI/ML model training",
+                    "✓ Dedicated Web3 and Blockchain testing environments",
+                    "✓ 24/7 access for final year project students"
+                ]
+            },
+            fitness: {
+                title: "Elite Fitness Center",
+                icon: "🏋️",
+                img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800",
+                desc: "Physical health is crucial to academic success. Our 10,000 sq.ft fitness center rivals commercial gyms, equipped to handle strength training, cardio, and rehabilitation.",
+                features: [
+                    "✓ Hammer Strength and Life Fitness equipment",
+                    "✓ Certified in-house trainers and nutritionists",
+                    "✓ Dedicated Yoga and Zumba studios",
+                    "✓ Steam room and recovery ice baths"
+                ]
+            },
+            sports: {
+                title: "Olympic Sports Complex",
+                icon: "🏀",
+                img: "https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=800",
+                desc: "Whether you play competitively or recreationally, our sprawling sports complex provides the perfect arena. We host inter-university tournaments year-round.",
+                features: [
+                    "✓ Synthetic wooden flooring Basketball court",
+                    "✓ 50-meter Olympic size swimming pool",
+                    "✓ Floodlit Cricket ground and Football turf",
+                    "✓ Indoor badminton and table tennis arena"
+                ]
+            },
+            canteen: {
+                title: "Central Multi-Cuisine Canteen",
+                icon: "☕",
+                img: "https://images.unsplash.com/photo-1525648199074-cee30ba79a4a?auto=format&fit=crop&q=80&w=800",
+                desc: "Our food courts are hygienic, diverse, and vibrant. It is the social hub of the campus where ideas are shared over hot coffee and delicious meals.",
+                features: [
+                    "✓ Dedicated Vegan and Gluten-free menus",
+                    "✓ On-campus Cafe Coffee Day (CCD) and Subway",
+                    "✓ Midnight snack delivery to hostel rooms",
+                    "✓ Fully digitized ordering app to skip queues"
+                ]
+            },
+            library: {
+                title: "24/7 Digital Library",
+                icon: "📚",
+                img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=800",
+                desc: "A massive 3-story quiet zone dedicated to reading and research. Our library seamlessly integrates traditional paperbacks with massive digital archives.",
+                features: [
+                    "✓ Access to IEEE, Springer, and ACM digital journals",
+                    "✓ Sound-proof glass cabins for group discussions",
+                    "✓ 100+ iMac workstations for research access",
+                    "✓ Automated self-checkout book kiosks"
+                ]
+            }
+        };
+
+        // Modal Logic
+        const modalOverlay = document.getElementById('modal-overlay');
+        const mTitle = document.getElementById('modal-title');
+        const mIcon = document.getElementById('modal-icon');
+        const mImg = document.getElementById('modal-img');
+        const mDesc = document.getElementById('modal-desc');
+        const mFeatures = document.getElementById('modal-features');
+
+        function openFacility(id) {
+            const data = facilitiesData[id];
+            if(!data) return;
+
+            // Inject Data
+            mTitle.innerText = data.title;
+            mIcon.innerText = data.icon;
+            mImg.src = data.img;
+            mDesc.innerText = data.desc;
+            
+            // Inject Bullet Points
+            mFeatures.innerHTML = '';
+            data.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.className = "text-sm text-gray-700 font-semibold flex items-start gap-2";
+                li.innerHTML = `<span>${feature}</span>`;
+                mFeatures.appendChild(li);
+            });
+
+            // Show Modal (Animatic Trigger)
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Close when clicking outside the box
+        function closeModal(e) {
+            if(e.target === modalOverlay) {
+                forceCloseModal();
+            }
+        }
+
+        // Close explicitly via button
+        function forceCloseModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    </script>
+</body>
+</html>

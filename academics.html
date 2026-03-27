@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Programs | APEX University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blood-red: #8C0000;
+        }
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #1a1a1a; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('two.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .academic-card {
+            background: white;
+            border-top: 4px solid transparent;
+        }
+        .academic-card:hover {
+            border-top-color: var(--blood-red);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header py-32 px-10 text-center text-white" data-aos="fade-down">
+        <h1 class="text-5xl md:text-7xl font-black mb-4">Academic Excellence</h1>
+        <p class="text-gray-300 uppercase tracking-widest text-sm font-bold">Discover Your Future at APEX</p>
+    </header>
+
+    <div class="max-w-7xl mx-auto py-20 px-10">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+            <h2 class="text-3xl font-black mb-6 text-[#8C0000]">World-Class Curriculums</h2>
+            <p class="text-gray-600 leading-relaxed text-lg">
+                Our academic programs are designed in collaboration with industry leaders to ensure you graduate with both theoretical depth and practical, SaaS-level execution skills.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+            
+            <div class="academic-card p-10 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="0">
+                <div class="text-4xl mb-6">🎓</div>
+                <h3 class="text-2xl font-black mb-4">Undergraduate</h3>
+                <p class="text-gray-500 mb-6 text-sm leading-relaxed">Foundation-building degrees focused on innovation, technology, and global business practices.</p>
+                <ul class="space-y-3 text-sm font-bold text-gray-700 border-t border-gray-100 pt-6">
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> B.Tech (CSE, AI, Robotics)</li>
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> BBA (FinTech, Marketing)</li>
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> B.Sc (Data Science)</li>
+                </ul>
+            </div>
+
+            <div class="academic-card p-10 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-4xl mb-6">🔬</div>
+                <h3 class="text-2xl font-black mb-4">Postgraduate</h3>
+                <p class="text-gray-500 mb-6 text-sm leading-relaxed">Advanced specializations designed to create industry leaders and cutting-edge researchers.</p>
+                <ul class="space-y-3 text-sm font-bold text-gray-700 border-t border-gray-100 pt-6">
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> M.Tech (Cyber Security)</li>
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> MBA (Global Strategy)</li>
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> MCA (Cloud Computing)</li>
+                </ul>
+            </div>
+
+            <div class="academic-card p-10 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-4xl mb-6">💡</div>
+                <h3 class="text-2xl font-black mb-4">Doctoral (Ph.D.)</h3>
+                <p class="text-gray-500 mb-6 text-sm leading-relaxed">Fully funded research programs tackling the world's most complex technological challenges.</p>
+                <ul class="space-y-3 text-sm font-bold text-gray-700 border-t border-gray-100 pt-6">
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> Ph.D. in Artificial Intelligence</li>
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> Ph.D. in Quantum Computing</li>
+                    <li class="flex items-center gap-2"><span class="text-[#8C0000]">•</span> Ph.D. in Econophysics</li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <div class="mt-20 bg-white p-12 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between border-l-8 border-[#8C0000]" data-aos="zoom-in">
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-2xl font-black mb-2">Ready to take the next step?</h3>
+                <p class="text-gray-500">Admissions for the 2026 academic year are now open.</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="contact-us.html" class="bg-[#8C0000] text-white px-8 py-4 font-bold uppercase text-xs tracking-widest rounded hover:bg-red-800 transition shadow-lg">Apply Now</a>
+                <a href="index.html" class="border-2 border-gray-200 text-gray-600 px-8 py-4 font-bold uppercase text-xs tracking-widest rounded hover:border-[#8C0000] hover:text-[#8C0000] transition">Back to Home</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>

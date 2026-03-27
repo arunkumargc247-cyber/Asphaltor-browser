@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Hosts Global AI & Web3 Summit | APEX News</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blood-red: #8C0000;
+            --formal-font: 'Playfair Display', serif;
+            --saas-font: 'Inter', sans-serif;
+        }
+
+        body { 
+            font-family: var(--saas-font); 
+            background: #f8f9fa; 
+            color: #1a1a1a; 
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, .nav-link, .serif-text { 
+            font-family: var(--formal-font); 
+        }
+
+        /* Global Smooth Transitions */
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* Mega Menu Dropdown Logic */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-top: 4px solid var(--blood-red);
+            z-index: 100;
+            padding: 10px 0;
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+
+        /* Article Formatting */
+        .article-body p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #374151; /* gray-700 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-gray-50 border-b border-gray-100 py-3 px-10 flex flex-col md:flex-row justify-between items-center text-xs relative z-50">
+        <div class="flex items-center gap-4">
+            <span class="text-3xl font-black text-[#8C0000] tracking-tighter uppercase font-serif">APEX UNIVERSITY</span>
+            <div class="h-6 w-[2px] bg-gray-300 hidden md:block"></div>
+            <div class="font-bold tracking-widest text-gray-500 uppercase text-[10px] md:text-xs">
+                NAAC A++ ACCREDITED • UGC RECOGNIZED • ESTD 1998
+            </div>
+        </div>
+        <div id="google_translate_element" class="mt-2 md:mt-0"></div>
+    </div>
+
+    <nav class="glass-nav sticky top-0 z-50 px-10 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-4">
+            <img src="logo.png" alt="APEX Logo" class="h-20 w-auto object-contain">
+            <div class="h-10 w-[1px] bg-gray-300"></div>
+            <span class="text-xs font-black uppercase text-gray-400 leading-none tracking-widest">Global<br>Standard</span>
+        </div>
+        
+        <div class="hidden lg:flex space-x-8 text-[11px] font-extrabold uppercase tracking-widest text-gray-800">
+            <a href="index.html" class="nav-link hover:text-red-700">Home</a>
+            
+            <div class="dropdown">
+                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">
+                    About <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu animate__animated animate__fadeIn">
+                    <a href="about-college.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">About College</a>
+                    <a href="ceo-desk.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">About COO</a>
+                    <a href="founder.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Founder</a>
+                    <a href="principal.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Principal</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">
+                    Departments <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu animate__animated animate__fadeIn">
+                    <a href="cse.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Computer Science (CSE)</a>
+                    <a href="iot.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">CSE (IoT & Cybersecurity)</a>
+                    <a href="Datascience.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Data Science</a>
+                    <a href="Civil.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Civil Engineering</a>
+                    <a href="Mech.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Mechanical Engineering</a>
+                </div>
+            </div>
+
+            <a href="facilities.html" class="nav-link hover:text-red-700">Facilities</a>
+            <a href="#" class="nav-link hover:text-red-700">Achievements</a>
+            <a href="#" class="nav-link hover:text-red-700">Placement</a>
+            <a href="contact-us.html" class="nav-link hover:text-red-700">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="relative w-full h-[60vh] bg-black flex items-end pb-16 px-6 md:px-20" data-aos="fade-in" data-aos-duration="1200">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto w-full text-center md:text-left">
+            <span class="inline-block bg-[#8C0000] text-white text-[10px] font-black px-4 py-2 rounded mb-6 uppercase tracking-widest shadow-lg">
+                Academics & Innovation
+            </span>
+            <h1 class="text-4xl md:text-6xl text-white font-black leading-tight mb-4 drop-shadow-lg">APEX Hosts Global AI & Web3 Summit 2026</h1>
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-gray-300 text-sm font-semibold tracking-wider uppercase">
+                <span>By APEX Media Desk</span>
+                <span class="w-1.5 h-1.5 bg-gray-500 rounded-full"></span>
+                <span>October 12, 2026</span>
+                <span class="w-1.5 h-1.5 bg-gray-500 rounded-full"></span>
+                <span>3 Min Read</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-20 px-6 md:px-10">
+        <article class="max-w-3xl mx-auto bg-white p-10 md:p-16 rounded-3xl shadow-xl -mt-32 relative z-20 article-body border border-gray-100" data-aos="fade-up">
+            
+            <p class="text-xl md:text-2xl text-gray-800 font-light mb-8 leading-relaxed">
+                <span class="text-5xl font-black text-[#8C0000] float-left mr-3 mt-2 line-height-none serif-text">T</span>he technological landscape is shifting at an unprecedented pace, and APEX University continues to stand at the epicenter of this revolution. This past week, our main auditorium transformed into a global nexus for innovation as we proudly hosted the 2026 Global AI & Web3 Summit.
+            </p>
+
+            <p>
+                Drawing over 2,000 attendees, including students, researchers, and venture capitalists, the summit provided an exclusive platform to explore the intersection of artificial intelligence and decentralized networks. Keynote speakers featured prominent industry leaders and chief engineers from tech giants such as Google, Meta, and Tesla.
+            </p>
+
+            <h2 class="text-3xl font-black text-gray-900 mt-12 mb-6 uppercase tracking-tight">Bridging the Gap Between Theory and Industry</h2>
+            
+            <p>
+                One of the major highlights of the summit was the interactive panel discussion on "The Ethical Framework of Generative AI in Core Engineering." The session challenged our Computer Science and Mechanical Engineering students to consider how autonomous systems will impact traditional manufacturing and data privacy.
+            </p>
+
+            <blockquote class="my-12 p-8 bg-gray-50 border-l-8 border-[#8C0000] rounded-r-2xl shadow-sm italic text-xl md:text-2xl text-gray-700 font-serif leading-relaxed">
+                "The engineers we are producing at APEX aren't just learning how to use tomorrow's technology; they are actively building it. This summit proves that our students are ready for the global stage."
+                <footer class="mt-4 text-sm font-bold text-[#8C0000] uppercase tracking-widest not-italic">— Dr. Arindam Sen, Dean of Computer Science</footer>
+            </blockquote>
+
+            <p>
+                Furthermore, the university announced a new <strong>₹5 Crore incubation fund</strong> dedicated to student-led startups focusing on Web3 infrastructure and IoT (Internet of Things) security. This initiative aligns directly with APEX's vision of fostering an entrepreneurial ecosystem on campus.
+            </p>
+
+            <h2 class="text-3xl font-black text-gray-900 mt-12 mb-6 uppercase tracking-tight">Looking Ahead</h2>
+            
+            <p>
+                The summit concluded with a massive hackathon where 50 teams competed to build sustainable blockchain solutions for local supply chains. The winning team, representing the Data Science department, walked away with a cash prize of ₹2 Lakhs and a direct interview pipeline with a leading Silicon Valley firm.
+            </p>
+
+            <p>
+                As APEX University continues to expand its global footprint, events like the AI & Web3 Summit reinforce our commitment to providing students with unparalleled exposure to the tools and thought leaders shaping our future.
+            </p>
+
+            <div class="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex gap-3">
+                    <span class="bg-red-50 text-[#8C0000] text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Artificial Intelligence</span>
+                    <span class="bg-red-50 text-[#8C0000] text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Events</span>
+                    <span class="bg-red-50 text-[#8C0000] text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Web3</span>
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-400 hover:text-[#8C0000] transition font-bold text-sm uppercase tracking-widest">Share Article ↗</a>
+                </div>
+            </div>
+        </article>
+
+        <div class="text-center mt-16" data-aos="fade-in">
+            <a href="index.html#news" class="inline-block border-2 border-[#8C0000] text-[#8C0000] px-10 py-3 rounded-full font-bold uppercase tracking-widest hover:bg-[#8C0000] hover:text-white transition shadow-lg">
+                ← Back to All News
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-[#0a0a0a] text-white py-16 px-10 text-center border-t border-gray-900 mt-10">
+        <div class="text-4xl font-black tracking-tighter text-[#8C0000] mb-4 font-serif uppercase">APEX UNIVERSITY</div>
+        <p class="opacity-40 text-[10px] tracking-widest uppercase font-bold">Production-Ready University Portal © 2026 | Built for Excellence</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({ 
+            duration: 800, 
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+
+        // GOOGLE TRANSLATE
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX University | Browser Battle Portal</title>
+    <title>APEX University | Home Portal</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
@@ -16,20 +19,30 @@
             --saas-font: 'Inter', sans-serif;
         }
 
-        body { font-family: var(--saas-font); background: #ffffff; color: #1a1a1a; overflow-x: hidden; }
-        h1, h2, h3, .nav-link { font-family: var(--formal-font); }
+        body { 
+            font-family: var(--saas-font); 
+            background: #ffffff; 
+            color: #1a1a1a; 
+            overflow-x: hidden; 
+        }
 
-        /* SaaS Ease-Out Transitions [Requested] */
-        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        h1, h2, h3, .nav-link { 
+            font-family: var(--formal-font); 
+        }
 
-        /* Glassmorphism Nav */
+        /* Global Smooth Transitions */
+        * { 
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        }
+
+        /* Glassmorphism Navigation */
         .glass-nav {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(0,0,0,0.08);
         }
 
-        /* Mega Menu Fix: Ensures menu stays open during mouse movement */
+        /* Mega Menu Dropdown Logic */
         .dropdown { position: relative; }
         .dropdown-menu {
             display: none;
@@ -50,147 +63,529 @@
             position: absolute;
             inset: 0;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 0.8s ease-in-out;
             background-size: cover;
             background-position: center;
         }
         .slide.active { opacity: 1; }
         
-        /* Accreditation Text Overlay */
-        .text-glow { text-shadow: 0 0 10px rgba(140, 0, 0, 0.2); }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.3) 100%);
+        }
+
+        /* News Card Custom Styles */
+        .news-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 4px solid transparent;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover {
+            border-top-color: var(--blood-red);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(140,0,0,0.15);
+        }
+        .news-card:hover .news-img {
+            transform: scale(1.08);
+        }
+
+        /* Stats Parallax Background */
+        .stats-bg {
+            background: linear-gradient(rgba(140,0,0,0.95), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* ========================================== */
+        /* APEX AI CHATBOT STYLES                     */
+        /* ========================================== */
+        #chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #chat-btn {
+            width: 65px;
+            height: 65px;
+            background-color: #8C0000;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(140, 0, 0, 0.4);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid white;
+        }
+        #chat-btn:hover { transform: scale(1.1) rotate(10deg); }
+
+        #chat-window {
+            position: absolute;
+            bottom: 85px;
+            right: 0;
+            width: 380px;
+            height: 550px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        #chat-window.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+
+        .chat-header {
+            background: #8C0000;
+            color: white;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-header h3 { margin: 0; font-size: 18px; font-weight: 800; font-family: 'Playfair Display', serif; }
+        .chat-header p { margin: 0; font-size: 11px; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+        .close-chat { cursor: pointer; font-size: 22px; font-weight: bold; transition: opacity 0.3s; }
+        .close-chat:hover { opacity: 0.7; }
+
+        #chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #f8f9fa;
+        }
+
+        .msg { max-width: 85%; padding: 12px 16px; border-radius: 1rem; font-size: 14px; line-height: 1.6; }
+        .bot-msg { background: white; border: 1px solid #e5e7eb; color: #1a1a1a; align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .user-msg { background: #1a1a1a; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        
+        /* Markdown formatting support for bot messages */
+        .bot-msg strong { color: #8C0000; font-weight: 800; }
+        .bot-msg p { margin-bottom: 8px; }
+        .bot-msg p:last-child { margin-bottom: 0; }
+
+        .chat-input-area {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+        #chat-input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid #ddd;
+            border-radius: 2rem;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            background: #f9f9f9;
+        }
+        #chat-input:focus { border-color: #8C0000; background: white; }
+        #send-btn {
+            background: #8C0000;
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.2s;
+        }
+        #send-btn:hover { background: #600000; transform: scale(1.05); }
+
+        .typing-indicator { display: none; align-self: flex-start; font-size: 12px; color: #888; padding: 0 10px; font-style: italic; }
     </style>
 </head>
 <body>
-
-    <div class="bg-gray-50 border-b border-gray-100 py-3 px-10 flex flex-col md:flex-row justify-between items-center text-xs">
+    <div class="bg-gray-50 border-b border-gray-100 py-3 px-10 flex flex-col md:flex-row justify-between items-center text-xs relative z-50">
         <div class="flex items-center gap-4">
-            <span class="text-xl font-black text-[#8C0000] tracking-tighter uppercase font-serif">APEX UNIVERSITY</span>
-            <div class="h-5 w-[1px] bg-gray-300 hidden md:block"></div>
-            <div class="font-bold tracking-widest text-gray-500">
+            <span class="text-3xl font-black text-[#8C0000] tracking-tighter uppercase font-serif">APEX UNIVERSITY</span>
+            <div class="h-6 w-[2px] bg-gray-300 hidden md:block"></div>
+            <div class="font-bold tracking-widest text-gray-500 uppercase text-[10px] md:text-xs">
                 NAAC A++ ACCREDITED • UGC RECOGNIZED • ESTD 1998
             </div>
         </div>
         <div id="google_translate_element" class="mt-2 md:mt-0"></div>
     </div>
 
-    <nav class="glass-nav sticky top-0 z-50 px-10 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <img src="logo.png" alt="APEX" class="h-12 w-auto object-contain">
-            <div class="h-8 w-[1px] bg-gray-200"></div>
-            <span class="text-[10px] font-black uppercase text-gray-400 leading-none">Global<br>Standard</span>
+    <nav class="glass-nav sticky top-0 z-50 px-10 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-4">
+            <img src="logo.png" alt="APEX Logo" class="h-20 w-auto object-contain">
+            <div class="h-10 w-[1px] bg-gray-300"></div>
+            <span class="text-xs font-black uppercase text-gray-400 leading-none tracking-widest">Global<br>Standard</span>
         </div>
         
         <div class="hidden lg:flex space-x-8 text-[11px] font-extrabold uppercase tracking-widest text-gray-800">
-            <a href="index.html" class="nav-link hover:text-red-700">Home</a>
+            <a href="index.html" class="nav-link text-red-700">Home</a>
             
             <div class="dropdown">
-                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">About <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></a>
+                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">
+                    About <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                </a>
                 <div class="dropdown-menu animate__animated animate__fadeIn">
                     <a href="about-college.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">About College</a>
-                    <a href="ceo-desk.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">CEO's Desk</a>
+                    <a href="ceo-desk.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">About COO</a>
                     <a href="founder.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Founder</a>
                     <a href="principal.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Principal</a>
                 </div>
             </div>
 
             <div class="dropdown">
-                <a href="cse-dept.html" class="nav-link hover:text-red-700 flex items-center gap-1">Departments <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></a>
+                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">
+                    Departments <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                </a>
                 <div class="dropdown-menu animate__animated animate__fadeIn">
                     <a href="cse.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Computer Science (CSE)</a>
-                    <a href="iot.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">CSE (IoT & Cyber)</a>
-                    <a href="cse.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Data Science</a>
+                    <a href="iot.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">CSE (IoT & Cybersecurity)</a>
+                    <a href="Datascience.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Data Science</a>
+                    <a href="Civil.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Civil Engineering</a>
+                    <a href="Mech.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Mechanical Engineering</a>
                 </div>
             </div>
 
-            <div class=""Facilities">
             <a href="facilities.html" class="nav-link hover:text-red-700">Facilities</a>
-            </div>
-
-            <a href="contact-us.html" class="nav-link hover:text-red-700">Contact Us</a></div>
-
-
-            <a href="#" class="nav-link hover:text-red-700">Facilities</a>
-            <a href="#" class="nav-link hover:text-red-700">Achievements</a>
-            <a href="#" class="nav-link hover:text-red-700">Placement</a>
-            <a href="#" class="nav-link hover:text-red-700">Contact Us</a>
+            <a href="achievements.html" class="nav-link hover:text-red-700">Achievements</a>
+            <a href="placement.html" class="nav-link hover:text-red-700">Placement</a>
+            <a href="contact-us.html" class="nav-link hover:text-red-700">Contact Us</a>
         </div>
     </nav>
 
-    <header class="relative h-[85vh] w-full overflow-hidden bg-black">
-        <div class="slide active" style="background-image: url('one.jpg');"></div>
-        <div class="slide" style="background-image: url('two.jpg');"></div>
-        <div class="slide" style="background-image: url('three.jpg');"></div>
-        <div class="slide" style="background-image: url('four.jpg');"></div>
-        <div class="slide" style="background-image: url('five.jpg');"></div>
-        <div class="slide" style="background-image: url('six.jpg');"></div>
+    <header class="relative h-[90vh] w-full overflow-hidden bg-black flex items-center">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=2000');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=2000');"></div>
         
-        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent z-10"></div>
+        <div class="hero-gradient absolute inset-0 z-10"></div>
         
-        <div class="relative z-20 h-full flex items-center px-10 md:px-24">
-            <div class="max-w-4xl" data-aos="fade-right">
-                <h1 class="text-white text-5xl md:text-8xl font-black mb-6 leading-none">REFINING <br><span class="text-[#8C0000]">INTELLIGENCE.</span></h1>
-                <p class="text-gray-300 text-lg md:text-xl mb-10 font-light max-w-2xl leading-relaxed italic">
-                    "Ranked among India's top private universities for technical education and industrial research."
+        <div class="relative z-20 px-10 md:px-24 w-full">
+            <div class="max-w-4xl" data-aos="fade-right" data-aos-duration="1500">
+                <h4 class="text-red-500 font-bold uppercase tracking-widest mb-4 text-sm md:text-base drop-shadow-md">Welcome to Excellence</h4>
+                <h1 class="text-white text-6xl md:text-8xl font-black mb-6 leading-none tracking-tight">REFINING <br><span class="text-[#8C0000]">INTELLIGENCE.</span></h1>
+                <p class="text-gray-200 text-lg md:text-2xl mb-10 font-light max-w-2xl leading-relaxed italic">
+                    "Ranked among India's top private universities for technical education, advanced robotics, and industrial research."
                 </p>
-                <div class="flex gap-6">
-                    <button class="bg-[#8C0000] text-white px-10 py-4 font-bold uppercase text-[11px] tracking-widest hover:bg-red-700 transition">Explore Academics</button>
-                    <button class="border border-white text-white px-10 py-4 font-bold uppercase text-[11px] tracking-widest hover:bg-white hover:text-black transition">Virtual Tour</button>
+                <div class="flex flex-wrap gap-6">
+                    <a href="academics.html" class="inline-block bg-[#8C0000] text-white px-10 py-4 font-bold uppercase text-[11px] tracking-widest hover:bg-red-700 transition transform hover:-translate-y-1 shadow-xl">Explore Academics</a>        
+                    <a href="virtual-tour.html" class="border border-white text-white px-10 py-4 font-bold uppercase text-[11px] tracking-widest hover:bg-white hover:text-black transition transform hover:-translate-y-1 shadow-xl">Virtual Tour</a>
                 </div>
             </div>
         </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-30">
+            <a href="#news" class="text-white text-3xl opacity-60 hover:opacity-100 transition">↓</a>
+        </div>
     </header>
 
-    <section class="py-20 px-10 bg-white">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-up">
-                <h2 class="text-4xl font-black mb-6 border-l-8 border-red-700 pl-6">National Credentials</h2>
-                <p class="text-gray-600 leading-loose text-lg mb-8">
-                    APEX University has been recognized as a Tier-1 institution. Our commitment to quality is reflected in our A++ NAAC accreditation and international ISO certifications.
-                </p>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-gray-50 rounded-lg border-b-2 border-red-700">
-                        <p class="text-2xl font-black text-red-800">A++</p>
-                        <p class="text-[10px] uppercase font-bold text-gray-400">NAAC Grade</p>
+    <section id="news" class="py-24 px-6 md:px-10 max-w-7xl mx-auto bg-white">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
+            <div>
+                <h4 class="text-[#8C0000] font-bold uppercase tracking-widest mb-2 text-sm border-l-4 border-red-700 pl-3">Campus Updates</h4>
+                <h2 class="text-5xl font-black text-gray-900">Latest News & Events</h2>
+            </div>
+            <a href="all-news.html" class="mt-6 md:mt-0 text-sm font-bold border-b-2 border-red-800 pb-1 text-[#8C0000] hover:text-gray-900 hover:border-gray-900 transition">
+                View All Archives →
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+            
+            <article class="news-card rounded-2xl shadow-lg flex flex-col group cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="window.location.href='news-ai-summit.html';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" alt="Tech Conference" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">
+                        Oct 12, 2026
                     </div>
-                    <div class="p-4 bg-gray-50 rounded-lg border-b-2 border-red-700">
-                        <p class="text-2xl font-black text-red-800">NIRF</p>
-                        <p class="text-[10px] uppercase font-bold text-gray-400">Top 100 Rank</p>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Academics</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">APEX Hosts Global AI & Web3 Summit</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+                        Industry leaders from Google, Meta, and Tesla gathered to discuss the future of decentralized networks and artificial intelligence.
+                    </p>
+                    <a href="news-ai-summit.html" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">
+                        Read Story <span class="text-lg">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-card rounded-2xl shadow-lg flex flex-col group cursor-pointer" data-aos="fade-up" data-aos-delay="200" onclick="window.location.href='news-placements.html';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800" alt="Graduation" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">
+                        Oct 05, 2026
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Placements</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">Record Breaking 65 LPA Package Secured</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+                        Three students from the Data Science department have secured international placements at elite fintech firms, setting a new university record.
+                    </p>
+                    <a href="news-placements.html" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">
+                        Read Story <span class="text-lg">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-card rounded-2xl shadow-lg flex flex-col group cursor-pointer" data-aos="fade-up" data-aos-delay="300" onclick="window.location.href='news-robotics.html';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" alt="Lab Research" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">
+                        Sep 28, 2026
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Innovation</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">New Heavy Robotics Lab Inaugurated</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">
+                        The Mechanical Engineering department unveils a state-of-the-art facility equipped with 6-axis KUKA arms for advanced manufacturing research.
+                    </p>
+                    <a href="news-robotics.html" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">
+                        Read Story <span class="text-lg">→</span>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="stats-bg py-24 px-10 text-white text-center">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div data-aos="zoom-in" data-aos-delay="0">
+                <p class="text-5xl md:text-6xl font-black text-[#ff3333] mb-2 font-serif">15k+</p>
+                <p class="text-sm font-bold uppercase tracking-widest text-gray-300">Global Alumni</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="100">
+                <p class="text-5xl md:text-6xl font-black text-[#ff3333] mb-2 font-serif">94%</p>
+                <p class="text-sm font-bold uppercase tracking-widest text-gray-300">Placement Rate</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="200">
+                <p class="text-5xl md:text-6xl font-black text-[#ff3333] mb-2 font-serif">50+</p>
+                <p class="text-sm font-bold uppercase tracking-widest text-gray-300">Advanced Labs</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="300">
+                <p class="text-5xl md:text-6xl font-black text-[#ff3333] mb-2 font-serif">250+</p>
+                <p class="text-sm font-bold uppercase tracking-widest text-gray-300">Corporate Partners</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-10 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h4 class="text-[#8C0000] font-bold uppercase tracking-widest mb-2 text-sm border-l-4 border-red-700 pl-3">Why Choose Us</h4>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase text-gray-900">National Credentials</h2>
+                <p class="text-gray-600 leading-loose text-lg mb-8">
+                    APEX University has been consistently recognized as a Tier-1 institution. Our commitment to academic excellence, hands-on research, and industry-integrated learning is reflected in our prestigious national accreditations.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="p-6 bg-white rounded-xl border-t-4 border-red-700 shadow-md hover:-translate-y-2 transition transform">
+                        <p class="text-4xl font-black text-gray-900 mb-1">A++</p>
+                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Highest NAAC Grade</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl border-t-4 border-gray-900 shadow-md hover:-translate-y-2 transition transform">
+                        <p class="text-4xl font-black text-[#8C0000] mb-1">Top 100</p>
+                        <p class="text-[10px] uppercase font-bold text-gray-500 tracking-widest">NIRF National Rank</p>
                     </div>
                 </div>
             </div>
-            <div class="h-80 rounded-2xl bg-[url('one.jpg')] bg-cover relative overflow-hidden shadow-2xl" data-aos="zoom-in">
-                <div class="absolute inset-0 bg-white/80 flex items-center justify-center p-12 text-center">
-                    <p class="text-xl font-serif italic text-gray-800 leading-relaxed">
-                        "Empowering the next generation of engineers through research-led teaching and world-class labs."
+            
+            <div class="h-96 rounded-2xl bg-[url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center relative overflow-hidden shadow-2xl" data-aos="fade-left">
+                <div class="absolute inset-0 bg-white/85 flex items-center justify-center p-12 text-center backdrop-blur-sm">
+                    <p class="text-2xl font-serif italic text-gray-800 leading-relaxed font-bold">
+                        "Empowering the next generation of engineers through research-led teaching and world-class innovation infrastructure."
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#111] text-white py-16 px-10 text-center border-t border-gray-800">
-        <div class="text-3xl font-black tracking-tighter text-[#8C0000] mb-4 font-serif uppercase">APEX UNIVERSITY</div>
-        <p class="opacity-40 text-[10px] tracking-widest uppercase">Production-Ready University Portal © 2026 | Browser Battle Submission</p>
+    <section class="bg-[#8C0000] py-16 px-10 text-center text-white">
+        <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 font-serif">Admissions Open 2026-2027</h2>
+            <p class="text-lg mb-8 text-red-100">Secure your future at India's leading private technical university. Early bird scholarships available for top merit students.</p>
+            <a href="#" class="inline-block bg-white text-[#8C0000] px-12 py-4 font-black uppercase text-xs tracking-widest hover:bg-gray-100 transition shadow-2xl rounded-full">Apply Now</a>
+        </div>
+    </section>
+
+    <footer class="bg-[#0a0a0a] text-white py-16 px-10 text-center border-t border-gray-900">
+        <div class="text-4xl font-black tracking-tighter text-[#8C0000] mb-4 font-serif uppercase">APEX UNIVERSITY</div>
+        <p class="opacity-40 text-[10px] tracking-widest uppercase font-bold">Production-Ready University Portal © 2026 | Built for Excellence</p>
     </footer>
+
+    <div id="chatbot-container">
+        <div id="chat-window">
+            <div class="chat-header">
+                <div>
+                    <h3>APEX Assistant</h3>
+                    <p>Powered by Gemini AI</p>
+                </div>
+                <span class="close-chat" onclick="toggleChat()">✕</span>
+            </div>
+            
+            <div id="chat-messages">
+                <div class="msg bot-msg">Hello! I am the APEX AI, powered by Gemini. Feel free to ask me anything about the real world, coding, history, or APEX University!</div>
+            </div>
+            <div class="typing-indicator" id="typing">AI is generating response...</div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask me anything..." onkeypress="handleEnter(event)">
+                <button id="send-btn" onclick="sendMessage()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="chat-btn" onclick="toggleChat()">
+            ✨
+        </div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1200, once: true });
+        // Initialize AOS animations
+        AOS.init({ 
+            duration: 1000, 
+            once: true,
+            easing: 'ease-out-cubic',
+            offset: 100
+        });
 
         // HERO SLIDER LOGIC
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
-        setInterval(() => {
+        
+        function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 5000);
+        }
+        
+        setInterval(nextSlide, 5000);
 
         // GOOGLE TRANSLATE
         function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
         }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        // ----------------------------------------------------
+        // PASTE YOUR GEMINI API KEY BELOW inside the quotes
+        // ----------------------------------------------------
+        const GEMINI_API_KEY = "YOUR_API_KEY_GOES_HERE"; 
+        
+        // System prompt instructs Gemini how to behave
+        const SYSTEM_PROMPT = "You are a highly intelligent, real-world AI integrated into the APEX University website. You must answer any real-world questions accurately, comprehensively, and intelligently, just as Google Gemini would. However, if asked about 'APEX University', act as its official, helpful ambassador.";
+
+        let chatHistory = [
+            { "role": "user", "parts": [{ "text": SYSTEM_PROMPT }] },
+            { "role": "model", "parts": [{ "text": "Understood. I will answer real-world questions accurately and act as the APEX ambassador when needed." }] }
+        ];
+
+        const chatWindow = document.getElementById('chat-window');
+        const messagesContainer = document.getElementById('chat-messages');
+        const userInput = document.getElementById('chat-input');
+        const typingIndicator = document.getElementById('typing');
+
+        function toggleChat() {
+            chatWindow.classList.toggle('active');
+            if(chatWindow.classList.contains('active')) {
+                userInput.focus();
+            }
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // Display user message
+            addMessageToUI(text, 'user-msg');
+            userInput.value = '';
+            
+            // Add to chat history for context
+            chatHistory.push({ "role": "user", "parts": [{ "text": text }] });
+
+            typingIndicator.style.display = 'block';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            try {
+                // Call Gemini 1.5 Flash API
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: chatHistory })
+                });
+
+                const data = await response.json();
+                
+                let botReply = "I'm sorry, I'm having trouble connecting to the servers right now.";
+                
+                if (data.error) {
+                    botReply = `Error: ${data.error.message} (Did you forget to add your API Key?)`;
+                } else if (data.candidates && data.candidates[0].content.parts[0].text) {
+                    botReply = data.candidates[0].content.parts[0].text;
+                    chatHistory.push({ "role": "model", "parts": [{ "text": botReply }] });
+                }
+
+                typingIndicator.style.display = 'none';
+                
+                // Parse basic Markdown (Bold and Paragraphs)
+                let formattedReply = botReply
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .split('\n')
+                    .filter(line => line.trim() !== '')
+                    .map(line => `<p>${line}</p>`)
+                    .join('');
+
+                addMessageToUI(formattedReply, 'bot-msg');
+
+            } catch (error) {
+                console.error(error);
+                typingIndicator.style.display = 'none';
+                addMessageToUI("<strong>Error:</strong> Ensure you have pasted a valid Gemini API key into the HTML code.", 'bot-msg');
+            }
+        }
+
+        function addMessageToUI(htmlText, className) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `msg ${className}`;
+            msgDiv.innerHTML = htmlText; // Render HTML directly to support bold/paragraphs
+            
+            messagesContainer.appendChild(msgDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+        }
+    </script>
 </body>
 </html>

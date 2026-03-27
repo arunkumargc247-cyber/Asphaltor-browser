@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | APEX University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* SaaS Smooth Ease-Out Transitions */
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        /* Low Opacity Background Styling */
+        .page-bg { 
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('five.jpg'); 
+            background-size: cover; 
+            background-attachment: fixed;
+            min-height: 100vh; 
+        }
+
+        /* Clean SaaS Input Fields */
+        .contact-input { 
+            border-bottom: 2px solid #e2e8f0; 
+            width: 100%; 
+            padding: 12px 0; 
+            outline: none; 
+            background: transparent; 
+            font-family: 'Inter', sans-serif;
+        }
+        .contact-input:focus { 
+            border-color: #8C0000; 
+            padding-left: 10px; /* Subtle movement effect */
+        }
+
+        .btn-blood {
+            background-color: #8C0000;
+            transition: 0.3s;
+        }
+        .btn-blood:hover {
+            background-color: #b30000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(140, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="page-bg font-['Inter']">
+
+    <div class="max-w-7xl mx-auto py-20 px-10">
+        <header class="mb-16" data-aos="fade-down">
+            <h1 class="text-6xl font-black" style="font-family: 'Playfair Display'; color: #8C0000;">Get In Touch</h1>
+            <p class="text-gray-500 uppercase tracking-widest text-sm font-bold mt-2">Connect with the APEX Admission & Support Team</p>
+        </header>
+        
+        <div class="grid md:grid-cols-2 gap-20">
+            <div class="bg-white p-12 rounded-3xl shadow-2xl" data-aos="fade-right">
+                <h3 class="text-2xl font-bold mb-8">Send us a Message</h3>
+                <form class="space-y-6">
+                    <div>
+                        <input type="text" placeholder="Full Name" class="contact-input">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Email Address" class="contact-input">
+                    </div>
+                    <div>
+                        <select class="contact-input text-gray-400">
+                            <option>Inquiry Type</option>
+                            <option>Admissions 2026</option>
+                            <option>Placement Inquiry</option>
+                            <option>General Support</option>
+                        </select>
+                    </div>
+                    <div>
+                        <textarea placeholder="Your Message" rows="4" class="contact-input"></textarea>
+                    </div>
+                    <button type="button" class="btn-blood text-white w-full py-4 rounded-xl font-bold shadow-xl mt-4">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+
+            <div class="space-y-12" data-aos="fade-left">
+                <div>
+                    <h4 class="text-red-700 font-bold uppercase tracking-widest text-sm mb-4">Campus Location</h4>
+                    <p class="text-3xl font-black" style="font-family: 'Playfair Display';">APEX University Main Campus</p>
+                    <p class="text-gray-600 mt-2">123 Knowledge Park, Silicon Valley, IND 560001</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-10">
+                    <div>
+                        <p class="font-bold uppercase text-[10px] text-gray-400 tracking-widest">Call Us</p>
+                        <p class="text-lg font-bold">+91 1800-APEX-UNIV</p>
+                    </div>
+                    <div>
+                        <p class="font-bold uppercase text-[10px] text-gray-400 tracking-widest">Email Us</p>
+                        <p class="text-lg font-bold">admissions@apex.edu.in</p>
+                    </div>
+                </div>
+
+                <div class="w-full h-80 bg-gray-200 rounded-2xl overflow-hidden border-4 border-white shadow-2xl" data-aos="zoom-in">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153166!3d-37.81732767975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1611811558850!5m2!1sen!2sau" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <div class="pt-6">
+                    <a href="index.html" class="text-sm font-bold border-b-2 border-red-800 pb-1 hover:text-red-800">
+                        ← Back to Main Portal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>

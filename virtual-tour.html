@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360° Immersive Tour | APEX University</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --blood-red: #8C0000; }
+        body { font-family: 'Inter', sans-serif; background: #050505; color: white; margin: 0; }
+        
+        /* The Actual 360 Container */
+        #panorama-container {
+            width: 100%;
+            height: 75vh;
+            background-color: #000;
+        }
+
+        .tour-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .tour-btn:hover {
+            background: var(--blood-red);
+            border-color: var(--blood-red);
+            transform: translateY(-3px);
+        }
+        .active-zone {
+            background: var(--blood-red);
+            border-color: var(--blood-red);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="p-6 flex justify-between items-center bg-black/90 border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-red-600 rounded-full animate-ping"></div>
+            <span class="text-xl font-black tracking-tighter uppercase font-serif">APEX <span class="text-red-700">360</span></span>
+        </div>
+        <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-60 hover:opacity-100 transition">Exit Tour</a>
+    </nav>
+
+    <section class="relative">
+        <div id="panorama-container"></div>
+        
+        <div class="absolute bottom-10 left-10 pointer-events-none">
+            <h1 id="zone-title" class="text-4xl font-serif font-bold mb-2">Main Campus Entry</h1>
+            <p class="text-gray-400 text-xs uppercase tracking-widest font-bold">Drag to look around • Scroll to zoom</p>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto p-10">
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+            
+            <button onclick="loadScene('https://pannellum.org/images/alma.jpg', 'Main Academic Plaza')" 
+                class="tour-btn flex-1 bg-white/5 p-6 rounded-2xl text-left group">
+                <p class="text-[10px] font-black text-red-600 uppercase mb-1">Exterior</p>
+                <h3 class="text-lg font-bold">Main Plaza</h3>
+            </button>
+
+            <button onclick="loadScene('https://pannellum.org/images/cerro-toco-0.jpg', 'Star Observatory')" 
+                class="tour-btn flex-1 bg-white/5 p-6 rounded-2xl text-left group">
+                <p class="text-[10px] font-black text-red-600 uppercase mb-1">Research</p>
+                <h3 class="text-lg font-bold">Observatory Deck</h3>
+            </button>
+
+            <button onclick="loadScene('https://pannellum.org/images/btsd.jpg', 'Central Library Hall')" 
+                class="tour-btn flex-1 bg-white/5 p-6 rounded-2xl text-left group">
+                <p class="text-[10px] font-black text-red-600 uppercase mb-1">Academics</p>
+                <h3 class="text-lg font-bold">Grand Library</h3>
+            </button>
+
+        </div>
+    </section>
+
+    <footer class="text-center py-10 opacity-30 text-[10px] uppercase font-bold tracking-widest">
+        Powered by Pannellum 3D Engine & APEX University
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script>
+        // Initialize the viewer with an external 360 photo
+        let viewer = pannellum.viewer('panorama-container', {
+            "type": "equirectangular",
+            "panorama": "https://pannellum.org/images/alma.jpg",
+            "autoLoad": true,
+            "autoRotate": -2,
+            "showControls": false
+        });
+
+        // Function to switch scenes smoothly
+        function loadScene(imgUrl, title) {
+            // Update Title
+            document.getElementById('zone-title').innerText = title;
+            
+            // Re-load the panorama
+            viewer.destroy();
+            viewer = pannellum.viewer('panorama-container', {
+                "type": "equirectangular",
+                "panorama": imgUrl,
+                "autoLoad": true,
+                "autoRotate": -2,
+                "showControls": false
+            });
+        }
+    </script>
+</body>
+</html>

@@ -2,11 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Data Science Engineering | APEX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science & AI | APEX University</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <style>
-        .page-bg { background: linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)), url('three.jpg'); background-size: cover; background-attachment: fixed; }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        body { font-family: 'Inter', sans-serif; color: #1a1a1a; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         
+        /* Background remains consistent, but you can swap 'three.jpg' for a data-themed image */
+        .page-bg { 
+            background: linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)), url('three.jpg'); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 4px solid transparent;
+        }
+        .glass-card:hover {
+            border-top-color: #8C0000;
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 1);
+        }
+
         /* Smooth Logo Slider Styling */
         .logo-track {
             display: flex;
@@ -20,54 +50,152 @@
     </style>
 </head>
 <body class="page-bg">
-    <div class="max-w-7xl mx-auto py-20 px-10">
-        <h1 class="text-6xl font-black mb-6" style="font-family: 'Playfair Display'; color: #8C0000;">Computer Science & Engineering (IOT & Cybersecurity including Blockchain)</h1>
-        <p class="text-xl text-gray-600 mb-12 max-w-4xl">The Department of Data Science at APEX is a hub for innovation, specializing in IOT & Cyber security including blockchain technology.</p>
+    
+    <div class="max-w-7xl mx-auto py-20 px-6 md:px-10">
+        
+        <header class="mb-20 text-center md:text-left" data-aos="fade-down" data-aos-duration="1000">
+            <h4 class="text-[#8C0000] font-bold uppercase tracking-widest mb-2 text-sm">School of Computing</h4>
+            <h1 class="text-5xl md:text-7xl font-black mb-6" style="color: #8C0000;">Data Science & AI</h1>
+            <p class="text-xl text-gray-600 max-w-4xl leading-relaxed">
+                Transforming raw data into actionable intelligence. We engineer visionary data scientists specializing in Machine Learning, Big Data Analytics, and Deep Neural Networks.
+            </p>
+        </header>
 
-        <div class="grid md:grid-cols-2 gap-12 mb-20">
-            <div class="bg-white p-8 rounded-2xl shadow-xl">
-                <h3 class="text-xl font-bold mb-6">Placement Growth (Last 5 Years)</h3>
-                <canvas id="PlacementChart"></canvas>
+        <div class="grid md:grid-cols-2 gap-10 mb-20">
+            <div class="glass-card p-10 rounded-2xl shadow-lg border-l-8 border-[#8C0000]" data-aos="fade-right">
+                <div class="text-4xl mb-4">🧠</div>
+                <h3 class="text-2xl font-bold mb-4">Department Vision</h3>
+                <p class="text-gray-600 leading-relaxed italic">
+                    "To be a global powerhouse in data-driven innovation, creating elite analytical minds capable of extracting profound insights to solve complex societal and business challenges."
+                </p>
             </div>
             
-            <div class="flex flex-col justify-center">
-                <h3 class="text-3xl font-black mb-4">98% Placement Success</h3>
-                <p class="text-gray-600">Our students are consistently placed in top-tier multinational corporations with an average package of 16 LPA.</p>
+            <div class="glass-card p-10 rounded-2xl shadow-lg border-r-8 border-[#8C0000]" data-aos="fade-left" data-aos-delay="200">
+                <div class="text-4xl mb-4">📈</div>
+                <h3 class="text-2xl font-bold mb-4">Department Mission</h3>
+                <ul class="space-y-3 text-gray-600 text-sm font-semibold">
+                    <li><span class="text-[#8C0000] mr-2">✔</span> Building rigorous foundations in advanced statistics and probability.</li>
+                    <li><span class="text-[#8C0000] mr-2">✔</span> Designing scalable predictive models and AI algorithms.</li>
+                    <li><span class="text-[#8C0000] mr-2">✔</span> Collaborating with industry to solve real-world big data problems.</li>
+                </ul>
             </div>
         </div>
 
-        <h3 class="text-center font-bold uppercase tracking-widest text-gray-400 mb-10">Our Recruiting Partners</h3>
-        <div class="overflow-hidden bg-white py-10 rounded-xl border border-gray-100">
-            <div class="logo-track space-x-12 items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tesla_Motors.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+        <div class="mb-24">
+            <h2 class="text-4xl font-black mb-10 text-center" data-aos="zoom-in">Specialized Programs</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-xl font-bold text-[#8C0000] mb-2">B.Tech in DS & AI</h4>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">4 Years | Undergrad</p>
+                    <p class="text-gray-600 text-sm mb-4">Core training in Python, R, Data Mining, Statistical Modeling, and Applied Machine Learning.</p>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-xl font-bold text-[#8C0000] mb-2">M.Tech in Big Data</h4>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">2 Years | Postgrad</p>
+                    <p class="text-gray-600 text-sm mb-4">Advanced modules on Hadoop ecosystems, Apache Spark, Natural Language Processing, and Computer Vision.</p>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-xl font-bold text-[#8C0000] mb-2">Ph.D. in Applied AI</h4>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">3-5 Years | Doctoral</p>
+                    <p class="text-gray-600 text-sm mb-4">Deep-dive research into Generative AI, Reinforcement Learning, and Algorithmic Bias Mitigation.</p>
+                </div>
             </div>
         </div>
+
+        <div class="bg-[#1a1a1a] text-white rounded-3xl p-12 mb-24 shadow-2xl relative overflow-hidden" data-aos="flip-up" data-aos-duration="1000">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#8C0000] rounded-full filter blur-3xl opacity-20"></div>
+            <h2 class="text-3xl font-black mb-8 border-b border-gray-700 pb-4">Lab & Curriculum Highlights</h2>
+            <div class="grid md:grid-cols-2 gap-10 relative z-10">
+                <div data-aos="fade-right" data-aos-delay="300">
+                    <h4 class="text-lg font-bold text-[#8C0000] mb-2">📊 Cognitive Computing Hub</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Equipped with high-performance GPU clusters where students train deep neural networks on massive, real-world datasets.</p>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="400">
+                    <h4 class="text-lg font-bold text-[#8C0000] mb-2">☁️ Big Data & Cloud Architecture</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Hands-on experience deploying data pipelines and machine learning models on AWS SageMaker and Google Cloud AI.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 mb-20 items-center">
+            <div class="bg-white p-8 rounded-3xl shadow-2xl border-t-8 border-[#8C0000]" data-aos="zoom-in-right">
+                <h3 class="text-xl font-bold mb-6">AI & Data Placement Growth</h3>
+                <canvas id="placementChart"></canvas>
+            </div>
+            
+            <div class="flex flex-col justify-center" data-aos="zoom-in-left">
+                <h4 class="text-[#8C0000] font-bold uppercase tracking-widest mb-2 text-sm">Industry Demand</h4>
+                <h3 class="text-4xl md:text-5xl font-black mb-6 leading-tight">Exponential Career Trajectory</h3>
+                <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                    Data is the new oil, and our graduates are the elite refiners. This highly specialized branch yields a phenomenal average package of <strong>15.2 LPA</strong>, with top AI architects securing up to <strong>65 LPA</strong>.
+                </p>
+                <button class="bg-[#8C0000] text-white w-max px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-red-800 transition shadow-lg">View Analytics Roles</button>
+            </div>
+        </div>
+
+        <div data-aos="fade-up">
+            <h3 class="text-center font-bold uppercase tracking-widest text-gray-500 mb-8">Top AI & Data Recruiters</h3>
+            <div class="overflow-hidden bg-white py-10 rounded-2xl shadow-xl border border-gray-100">
+                <div class="logo-track space-x-12 items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tesla_Motors.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" class="h-8 w-40 object-contain grayscale opacity-50 hover:opacity-100 transition">
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center" data-aos="fade-in">
+            <a href="index.html" class="text-sm font-bold border-b-2 border-red-800 pb-1 hover:text-red-800 transition">
+                ← Return to University Portal
+            </a>
+        </div>
+
     </div>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Placement Graph Logic
+        // Initialize Scroll Animations
+        AOS.init({ 
+            duration: 900, 
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+
+        // Placement Graph Logic (Updated data curve for Data Science branch)
         const ctx = document.getElementById('placementChart').getContext('2d');
         new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['2021', '2022', '2023', '2024', '2025'],
                 datasets: [{
-                    label: 'Students Placed',
-                    data: [350, 380, 420, 710, 850],
+                    label: 'Data Science & AI Placements',
+                    data: [200, 350, 520, 780, 950], // Adjusted data to show massive AI boom
                     borderColor: '#8C0000',
+                    borderWidth: 3,
                     tension: 0.4,
                     fill: true,
-                    backgroundColor: 'rgba(140, 0, 0, 0.1)'
+                    backgroundColor: 'rgba(140, 0, 0, 0.08)',
+                    pointBackgroundColor: '#8C0000',
+                    pointRadius: 5
                 }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
             }
         });
     </script>

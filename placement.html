@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Cell | APEX University</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900;900i&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blood-red: #8C0000;
+            --formal-font: 'Playfair Display', serif;
+            --saas-font: 'Inter', sans-serif;
+        }
+
+        body { 
+            font-family: var(--saas-font); 
+            background: #f8f9fa; 
+            color: #1a1a1a; 
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, .nav-link, .serif-text { 
+            font-family: var(--formal-font); 
+        }
+
+        /* Global Smooth Transitions */
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* Hero Image Overlay */
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(140,0,0,0.6)), url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=2000');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Infinite Marquee Animation */
+        .marquee-wrapper {
+            overflow: hidden;
+            display: flex;
+            width: 100%;
+            background: white;
+            padding: 2.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .marquee-track {
+            display: flex;
+            align-items: center;
+            gap: 6rem;
+            padding-right: 6rem;
+            animation: scrollMarquee 25s linear infinite;
+            white-space: nowrap;
+        }
+        /* Pause animation on hover */
+        .marquee-wrapper:hover .marquee-track {
+            animation-play-state: paused;
+        }
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .company-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #9ca3af; /* gray-400 */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        .company-logo:hover {
+            color: var(--blood-red);
+        }
+
+        /* Alumni Card Hover */
+        .alumni-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .alumni-img-wrapper {
+            height: 300px;
+            overflow: hidden;
+        }
+        .alumni-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .alumni-overlay {
+            position: absolute;
+            bottom: -100px; /* Hidden initially */
+            left: 0;
+            right: 0;
+            background: rgba(140,0,0,0.95);
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(5px);
+        }
+        .alumni-card:hover .alumni-img {
+            transform: scale(1.05);
+        }
+        .alumni-card:hover .alumni-overlay {
+            bottom: 0;
+        }
+
+        /* Process Steps */
+        .step-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--blood-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--blood-red);
+            z-index: 10;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-nav sticky top-0 z-50 px-10 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-4">
+            <span class="text-2xl font-black text-[#8C0000] tracking-tighter uppercase font-serif">APEX</span>
+            <div class="h-10 w-[1px] bg-gray-300"></div>
+            <span class="text-xs font-black uppercase text-gray-400 leading-none tracking-widest">Global<br>Standard</span>
+        </div>
+        
+        <div class="hidden lg:flex space-x-8 text-[11px] font-extrabold uppercase tracking-widest text-gray-800">
+            <a href="index.html" class="nav-link hover:text-red-700">Home</a>
+            <a href="facilities.html" class="nav-link hover:text-red-700">Facilities</a>
+            <a href="achievements.html" class="nav-link hover:text-red-700">Achievements</a>
+            <a href="placement.html" class="nav-link text-red-700">Placement</a>
+            <a href="all-news.html" class="nav-link hover:text-red-700">News</a>
+            <a href="contact-us.html" class="nav-link hover:text-red-700">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="hero-bg h-[70vh] flex flex-col items-center justify-center text-center relative overflow-hidden px-6">
+        <div class="relative z-10 w-full max-w-4xl" data-aos="zoom-out" data-aos-duration="1500">
+            <span class="inline-block bg-[#8C0000] text-white text-[10px] font-black px-4 py-2 rounded mb-6 uppercase tracking-widest shadow-lg animate__animated animate__fadeInDown">
+                Career Development Cell
+            </span>
+            <h1 class="text-white text-5xl md:text-7xl font-black mb-6 leading-tight serif-text">
+                Launching Careers.<br>Building Futures.
+            </h1>
+            <p class="text-gray-200 text-lg font-light max-w-2xl mx-auto leading-relaxed">
+                APEX University bridges the gap between academic excellence and industry demands, ensuring our graduates are Day-1 ready for top Fortune 500 companies.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-12 bg-white relative z-20 -mt-16 mx-6 md:mx-20 rounded-2xl shadow-2xl border border-gray-100" id="stats-section">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-6">
+            <div data-aos="fade-up" data-aos-delay="0">
+                <p class="text-4xl md:text-5xl font-black text-[#8C0000] mb-2 serif-text">₹<span class="counter" data-target="65">0</span> LPA</p>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Highest Package</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="100">
+                <p class="text-4xl md:text-5xl font-black text-gray-900 mb-2 serif-text">₹<span class="counter" data-target="12">0</span> LPA</p>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Average Package</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <p class="text-4xl md:text-5xl font-black text-[#8C0000] mb-2 serif-text"><span class="counter" data-target="98">0</span>%</p>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Placement Rate</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <p class="text-4xl md:text-5xl font-black text-gray-900 mb-2 serif-text"><span class="counter" data-target="500">0</span>+</p>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500">Recruiting Partners</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50 text-center overflow-hidden">
+        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-10">Our Top Recruiting Partners</h3>
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <span class="company-logo">Google</span>
+                <span class="company-logo">Microsoft</span>
+                <span class="company-logo">Amazon</span>
+                <span class="company-logo">TCS</span>
+                <span class="company-logo">Infosys</span>
+                <span class="company-logo">Wipro</span>
+                <span class="company-logo">IBM</span>
+                <span class="company-logo">Accenture</span>
+                <span class="company-logo">Google</span>
+                <span class="company-logo">Microsoft</span>
+                <span class="company-logo">Amazon</span>
+                <span class="company-logo">TCS</span>
+                <span class="company-logo">Infosys</span>
+                <span class="company-logo">Wipro</span>
+                <span class="company-logo">IBM</span>
+                <span class="company-logo">Accenture</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 md:px-10 max-w-6xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900 serif-text">The Placement Process</h2>
+            <p class="text-[#8C0000] uppercase tracking-widest font-bold text-sm">A Structured Path to Success</p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8 relative">
+            <div class="hidden md:block absolute top-8 left-10 right-10 h-1 bg-gray-200 z-0"></div>
+
+            <div class="relative flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="0">
+                <div class="step-circle group-hover:bg-[#8C0000] group-hover:text-white transition duration-300">1</div>
+                <h4 class="text-lg font-bold mt-6 mb-2 text-gray-900">Pre-Placement Talk</h4>
+                <p class="text-sm text-gray-600">Companies visit campus to brief students about roles, culture, and career growth.</p>
+            </div>
+
+            <div class="relative flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="150">
+                <div class="step-circle group-hover:bg-[#8C0000] group-hover:text-white transition duration-300">2</div>
+                <h4 class="text-lg font-bold mt-6 mb-2 text-gray-900">Aptitude & Coding</h4>
+                <p class="text-sm text-gray-600">Rigorous online assessments to test logical reasoning and programming skills.</p>
+            </div>
+
+            <div class="relative flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-circle group-hover:bg-[#8C0000] group-hover:text-white transition duration-300">3</div>
+                <h4 class="text-lg font-bold mt-6 mb-2 text-gray-900">Technical Interview</h4>
+                <p class="text-sm text-gray-600">In-depth 1-on-1 interviews with industry experts focusing on core engineering concepts.</p>
+            </div>
+
+            <div class="relative flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="450">
+                <div class="step-circle group-hover:bg-[#8C0000] group-hover:text-white transition duration-300">4</div>
+                <h4 class="text-lg font-bold mt-6 mb-2 text-gray-900">HR & Final Offer</h4>
+                <p class="text-sm text-gray-600">Final cultural fit round, salary negotiations, and distribution of offer letters.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-900 text-white px-6 md:px-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 serif-text">Recent Success Stories</h2>
+                <p class="text-red-500 uppercase tracking-widest font-bold text-sm">Meet our recent placed graduates</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="alumni-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="alumni-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Student" class="alumni-img">
+                    </div>
+                    <div class="p-6 bg-white text-gray-900 relative z-10">
+                        <h3 class="text-xl font-bold mb-1">Ayesha Khan</h3>
+                        <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">B.Tech CSE '25</p>
+                    </div>
+                    <div class="alumni-overlay">
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-red-300 mb-1">Placed At</p>
+                        <h4 class="text-2xl font-black mb-2">Microsoft</h4>
+                        <p class="text-sm">Software Development Engineer (SDE-1)</p>
+                        <p class="mt-3 text-xl font-bold font-serif">₹45.5 LPA</p>
+                    </div>
+                </div>
+
+                <div class="alumni-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="alumni-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&q=80&w=600" alt="Student" class="alumni-img">
+                    </div>
+                    <div class="p-6 bg-white text-gray-900 relative z-10">
+                        <h3 class="text-xl font-bold mb-1">Rohan Mehta</h3>
+                        <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">Data Science '25</p>
+                    </div>
+                    <div class="alumni-overlay">
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-red-300 mb-1">Placed At</p>
+                        <h4 class="text-2xl font-black mb-2">Amazon</h4>
+                        <p class="text-sm">Data Analyst</p>
+                        <p class="mt-3 text-xl font-bold font-serif">₹32.0 LPA</p>
+                    </div>
+                </div>
+
+                <div class="alumni-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="alumni-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded790047?auto=format&fit=crop&q=80&w=600" alt="Student" class="alumni-img">
+                    </div>
+                    <div class="p-6 bg-white text-gray-900 relative z-10">
+                        <h3 class="text-xl font-bold mb-1">Vikram Singh</h3>
+                        <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">Mechanical '25</p>
+                    </div>
+                    <div class="alumni-overlay">
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-red-300 mb-1">Placed At</p>
+                        <h4 class="text-2xl font-black mb-2">Larsen & Toubro</h4>
+                        <p class="text-sm">Design Engineer</p>
+                        <p class="mt-3 text-xl font-bold font-serif">₹14.0 LPA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-16 px-10 text-center border-t border-gray-900">
+        <div class="text-4xl font-black tracking-tighter text-[#8C0000] mb-4 font-serif uppercase">APEX UNIVERSITY</div>
+        <p class="opacity-40 text-[10px] tracking-widest uppercase font-bold">Production-Ready University Portal | Built for Excellence</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Scroll Animations
+        AOS.init({ duration: 800, once: true, offset: 100 });
+
+        // Animated Number Counter Logic
+        const counters = document.querySelectorAll('.counter');
+        let hasAnimated = false;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); 
+
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        };
+
+        // Trigger counter animation only when stats section is visible
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !hasAnimated) {
+                animateCounters();
+                hasAnimated = true;
+            }
+        }, { threshold: 0.5 });
+
+        observer.observe(document.getElementById('stats-section'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Announcements | APEX University</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blood-red: #8C0000;
+            --formal-font: 'Playfair Display', serif;
+            --saas-font: 'Inter', sans-serif;
+        }
+
+        body { 
+            font-family: var(--saas-font); 
+            background: #f8f9fa; 
+            color: #1a1a1a; 
+            overflow-x: hidden; 
+        }
+
+        h1, h2, h3, .nav-link, .serif-text { 
+            font-family: var(--formal-font); 
+        }
+
+        * { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* Mega Menu Dropdown */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-top: 4px solid var(--blood-red);
+            z-index: 100;
+            padding: 10px 0;
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+
+        /* News Card Styles */
+        .news-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-top: 4px solid transparent;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover {
+            border-top-color: var(--blood-red);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(140,0,0,0.15);
+        }
+        .news-card:hover .news-img {
+            transform: scale(1.08);
+        }
+
+        /* Filter Button Active State */
+        .filter-btn.active {
+            background-color: var(--blood-red);
+            color: white;
+            border-color: var(--blood-red);
+        }
+        
+        /* Hide class for filtering */
+        .hidden-card {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-gray-50 border-b border-gray-100 py-3 px-10 flex flex-col md:flex-row justify-between items-center text-xs relative z-50">
+        <div class="flex items-center gap-4">
+            <span class="text-3xl font-black text-[#8C0000] tracking-tighter uppercase font-serif">APEX UNIVERSITY</span>
+            <div class="h-6 w-[2px] bg-gray-300 hidden md:block"></div>
+            <div class="font-bold tracking-widest text-gray-500 uppercase text-[10px] md:text-xs">
+                NAAC A++ ACCREDITED • UGC RECOGNIZED • ESTD 1998
+            </div>
+        </div>
+        <div id="google_translate_element" class="mt-2 md:mt-0"></div>
+    </div>
+
+    <nav class="glass-nav sticky top-0 z-50 px-10 py-4 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-4">
+            <img src="logo.png" alt="APEX Logo" class="h-20 w-auto object-contain">
+            <div class="h-10 w-[1px] bg-gray-300"></div>
+            <span class="text-xs font-black uppercase text-gray-400 leading-none tracking-widest">Global<br>Standard</span>
+        </div>
+        
+        <div class="hidden lg:flex space-x-8 text-[11px] font-extrabold uppercase tracking-widest text-gray-800">
+            <a href="index.html" class="nav-link hover:text-red-700">Home</a>
+            
+            <div class="dropdown">
+                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">
+                    About <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu animate__animated animate__fadeIn">
+                    <a href="about-college.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">About College</a>
+                    <a href="ceo-desk.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">About COO</a>
+                    <a href="founder.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Founder</a>
+                    <a href="principal.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Principal</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="nav-link hover:text-red-700 flex items-center gap-1">
+                    Departments <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu animate__animated animate__fadeIn">
+                    <a href="cse.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Computer Science (CSE)</a>
+                    <a href="iot.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">CSE (IoT & Cybersecurity)</a>
+                    <a href="Datascience.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Data Science</a>
+                    <a href="Civil.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700 border-b border-gray-50">Civil Engineering</a>
+                    <a href="Mech.html" class="block px-8 py-3 hover:bg-red-50 hover:text-red-700">Mechanical Engineering</a>
+                </div>
+            </div>
+
+            <a href="facilities.html" class="nav-link hover:text-red-700">Facilities</a>
+            <a href="#" class="nav-link hover:text-red-700">Achievements</a>
+            <a href="#" class="nav-link hover:text-red-700">Placement</a>
+            <a href="contact-us.html" class="nav-link hover:text-red-700">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="bg-[#0a0a0a] py-20 px-6 md:px-10 text-center relative overflow-hidden" data-aos="fade-in">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-20"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h4 class="text-red-500 font-bold uppercase tracking-widest mb-3 text-sm drop-shadow-md">The APEX Chronicle</h4>
+            <h1 class="text-5xl md:text-6xl text-white font-black leading-tight mb-6 font-serif">News & Announcements</h1>
+            <p class="text-gray-300 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed italic">
+                Stay updated with the latest breakthroughs, campus events, and placement records from India's premier technical university.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-10 px-6 md:px-10 max-w-7xl mx-auto border-b border-gray-200">
+        <div class="flex flex-wrap items-center justify-center gap-4" id="filter-container">
+            <button class="filter-btn active border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs hover:border-[#8C0000] hover:text-[#8C0000] transition" data-filter="all">All News</button>
+            <button class="filter-btn border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs hover:border-[#8C0000] hover:text-[#8C0000] transition" data-filter="academics">Academics</button>
+            <button class="filter-btn border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs hover:border-[#8C0000] hover:text-[#8C0000] transition" data-filter="placements">Placements</button>
+            <button class="filter-btn border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs hover:border-[#8C0000] hover:text-[#8C0000] transition" data-filter="innovation">Innovation</button>
+            <button class="filter-btn border-2 border-gray-300 text-gray-700 px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs hover:border-[#8C0000] hover:text-[#8C0000] transition" data-filter="events">Events</button>
+        </div>
+    </section>
+
+    <section class="py-16 px-6 md:px-10 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-10" id="news-grid">
+            
+            <article class="news-card rounded-2xl shadow-lg group cursor-pointer" data-category="academics events" data-aos="fade-up" onclick="window.location.href='news-ai-summit.html';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" alt="Tech Conference" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">Oct 12, 2026</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Academics</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">APEX Hosts Global AI & Web3 Summit</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">Industry leaders from Google, Meta, and Tesla gathered to discuss the future of decentralized networks.</p>
+                    <a href="news-ai-summit.html" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">Read Story <span class="text-lg">→</span></a>
+                </div>
+            </article>
+
+            <article class="news-card rounded-2xl shadow-lg group cursor-pointer" data-category="placements" data-aos="fade-up" data-aos-delay="100" onclick="window.location.href='news-placements.html';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800" alt="Graduation" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">Oct 05, 2026</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Placements</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">Record Breaking 65 LPA Package Secured</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">Three students have secured international placements at elite fintech firms, setting a new record.</p>
+                    <a href="news-placements.html" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">Read Story <span class="text-lg">→</span></a>
+                </div>
+            </article>
+
+            <article class="news-card rounded-2xl shadow-lg group cursor-pointer" data-category="innovation" data-aos="fade-up" data-aos-delay="200" onclick="window.location.href='news-robotics.html';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" alt="Lab Research" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">Sep 28, 2026</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Innovation</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">New Heavy Robotics Lab Inaugurated</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">The Mechanical Engineering department unveils a state-of-the-art facility equipped with KUKA arms.</p>
+                    <a href="news-robotics.html" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">Read Story <span class="text-lg">→</span></a>
+                </div>
+            </article>
+
+            <article class="news-card rounded-2xl shadow-lg group cursor-pointer" data-category="events" data-aos="fade-up" onclick="window.location.href='#';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=800" alt="Sports Fest" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">Sep 15, 2026</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Events</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">Annual Sports Fest 'Ignite' Announced</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">Get ready for three days of intense inter-college athletic competitions and cultural performances.</p>
+                    <a href="#" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">Read Story <span class="text-lg">→</span></a>
+                </div>
+            </article>
+
+            <article class="news-card rounded-2xl shadow-lg group cursor-pointer" data-category="academics" data-aos="fade-up" data-aos-delay="100" onclick="window.location.href='#';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" alt="Students Studying" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">Aug 30, 2026</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Academics</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">APEX Retains NAAC A++ Status</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">The National Assessment and Accreditation Council has reaffirmed our highest grade for the 3rd cycle.</p>
+                    <a href="#" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">Read Story <span class="text-lg">→</span></a>
+                </div>
+            </article>
+
+            <article class="news-card rounded-2xl shadow-lg group cursor-pointer" data-category="innovation placements" data-aos="fade-up" data-aos-delay="200" onclick="window.location.href='#';">
+                <div class="relative overflow-hidden h-56 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Meeting" class="news-img w-full h-full object-cover transition duration-700">
+                    <div class="absolute top-4 left-4 bg-[#8C0000] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg">Aug 12, 2026</div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-[10px] font-black text-red-700 uppercase tracking-widest mb-2">Innovation</p>
+                    <h3 class="text-2xl font-bold mb-4 leading-snug group-hover:text-[#8C0000] transition">Microsoft Opens Incubator at Campus</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">A new partnership with Microsoft will provide cloud credits and direct mentorship to student startups.</p>
+                    <a href="#" class="text-gray-900 font-bold text-xs uppercase tracking-widest group-hover:text-[#8C0000] flex items-center gap-2 mt-auto transition">Read Story <span class="text-lg">→</span></a>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="mt-20 flex justify-center gap-2">
+            <button class="w-10 h-10 rounded-full bg-[#8C0000] text-white font-bold shadow-md hover:bg-red-800 transition">1</button>
+            <button class="w-10 h-10 rounded-full bg-white border border-gray-300 text-gray-700 font-bold hover:border-[#8C0000] hover:text-[#8C0000] transition">2</button>
+            <button class="w-10 h-10 rounded-full bg-white border border-gray-300 text-gray-700 font-bold hover:border-[#8C0000] hover:text-[#8C0000] transition">3</button>
+            <span class="w-10 h-10 flex items-center justify-center text-gray-500">...</span>
+            <button class="w-10 h-10 rounded-full bg-white border border-gray-300 text-gray-700 font-bold hover:border-[#8C0000] hover:text-[#8C0000] transition">→</button>
+        </div>
+    </section>
+
+    <footer class="bg-[#0a0a0a] text-white py-16 px-10 text-center border-t border-gray-900 mt-10">
+        <div class="text-4xl font-black tracking-tighter text-[#8C0000] mb-4 font-serif uppercase">APEX UNIVERSITY</div>
+        <p class="opacity-40 text-[10px] tracking-widest uppercase font-bold">Production-Ready University Portal © 2026 | Built for Excellence</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({ 
+            duration: 800, 
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+
+        // FILTERING LOGIC
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const newsCards = document.querySelectorAll('.news-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                newsCards.forEach(card => {
+                    // Check if the card's data-category includes the filter value
+                    if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
+                        card.classList.remove('hidden-card');
+                        // Optional: Reset AOS animation so it fades in again when filtered
+                        card.classList.remove('aos-animate');
+                        setTimeout(() => { card.classList.add('aos-animate'); }, 50);
+                    } else {
+                        card.classList.add('hidden-card');
+                    }
+                });
+            });
+        });
+
+        // GOOGLE TRANSLATE
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
